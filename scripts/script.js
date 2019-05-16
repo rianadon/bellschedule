@@ -147,6 +147,7 @@ function updateUrlParams() {
 addEventListener("load", function (event) {
     initViewport();
     initTitle();
+    initDarkTheme();
     $.ajax({url: "special.txt", success: function(data) {
         parseRawSchedule(data);
         $.ajax({url: "options.json", success: function(data) {
@@ -157,6 +158,10 @@ addEventListener("load", function (event) {
 
 function error() {
     console.log("error downloading");
+}
+
+function initDarkTheme() {
+    document.body.classList.toggle("dark", localStorage.dark == 'true');
 }
 
 function initViewport() {
@@ -1175,6 +1180,9 @@ function attachOptionActions() {
     });
     document.getElementsByName("color")[0].addEventListener("change", function (event) {
         updateSchedule(null, true);
+    });
+    document.getElementsByName("dark")[0].addEventListener("change", function (event) {
+        initDarkTheme();
     });
     //Adds listeners to update schedule when period names are changed
     for (var i = 1; i <= 7; i++) {

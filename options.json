@@ -10,6 +10,12 @@
 					"description": "Show color"
 				},
 				{
+					"name": "dark",
+					"type": "checkbox",
+					"default": false,
+					"description": "Enable dark theme"
+				},
+                {
 					"name": "showPassingPeriods",
 					"type": "checkbox",
 					"default": true,
